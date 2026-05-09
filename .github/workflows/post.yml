@@ -2,8 +2,8 @@ name: Daily Instagram Post
 
 on:
   schedule:
-    # 13:30 UTC = 7:00 PM IST. Adjust to your timezone if needed.
-    - cron: '30 13 * * *'
+    # 14:00 UTC = 7:30 PM IST. Adjust to your timezone if needed.
+    - cron: '0 14 * * *'
   workflow_dispatch:  # allow manual runs from the Actions tab
 
 permissions:
