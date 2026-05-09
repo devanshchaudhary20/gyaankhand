@@ -38,10 +38,23 @@ def _api_url(path: str) -> str:
     return f"{config.IG_API_HOST}/{config.IG_API_VERSION}/{path.lstrip('/')}"
 
 
+def _check(resp: requests.Response, ctx: str) -> dict:
+    """Raise with the API error body included; return parsed JSON on success."""
+    if resp.status_code >= 400:
+        try:
+            err = resp.json()
+        except Exception:
+            err = resp.text
+        raise RuntimeError(
+            f"{ctx} -> HTTP {resp.status_code}: {err}"
+        )
+    return resp.json()
+
+
 def create_media_container(image_url: str, caption: str) -> str:
     """Create the media container; returns container/creation ID."""
     resp = requests.post(
-        _api_url(f"{config.IG_USER_ID}/media"),
+        _api_url("me/media"),
         data={
             "image_url": image_url,
             "caption": caption,
@@ -49,8 +62,7 @@ def create_media_container(image_url: str, caption: str) -> str:
         },
         timeout=60,
     )
-    resp.raise_for_status()
-    payload = resp.json()
+    payload = _check(resp, "create_media_container")
     container_id = payload.get("id")
     if not container_id:
         raise RuntimeError(f"No container id in response: {payload}")
@@ -69,8 +81,7 @@ def wait_for_container_ready(container_id: str, timeout_s: int = 120) -> None:
             },
             timeout=30,
         )
-        resp.raise_for_status()
-        data = resp.json()
+        data = _check(resp, "wait_for_container_ready")
         status = data.get("status_code") or data.get("status", "")
         if status in ("FINISHED", "PUBLISHED"):
             return
@@ -83,15 +94,14 @@ def wait_for_container_ready(container_id: str, timeout_s: int = 120) -> None:
 def publish_container(container_id: str) -> str:
     """Publish container; returns the published media ID."""
     resp = requests.post(
-        _api_url(f"{config.IG_USER_ID}/media_publish"),
+        _api_url("me/media_publish"),
         data={
             "creation_id": container_id,
             "access_token": config.IG_LONG_LIVED_TOKEN,
         },
         timeout=60,
     )
-    resp.raise_for_status()
-    return resp.json().get("id", "")
+    return _check(resp, "publish_container").get("id", "")
 
 
 def post(image_url: str, caption: str) -> str:

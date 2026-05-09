@@ -67,7 +67,10 @@ jobs:
 
       - name: Commit posted-state log
         run: |
-          git pull --rebase
-          git add state/posted.json
-          git commit -m "Log published post [skip ci]" || { echo "Nothing to commit"; exit 0; }
+          git add -A state/
+          if git diff --staged --quiet; then
+            echo "Nothing to commit"
+            exit 0
+          fi
+          git commit -m "Log published post [skip ci]"
           git push
