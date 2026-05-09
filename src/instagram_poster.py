@@ -1,0 +1,118 @@
+"""Instagram poster — Instagram Login (Business Login) flow.
+
+Uses graph.instagram.com (NOT graph.facebook.com).
+
+Two-step publish:
+1. POST /{ig-user-id}/media         -> creates a media container, returns container ID
+2. POST /{ig-user-id}/media_publish -> publishes the container
+
+The image MUST be reachable at a public URL. We host it via raw.githubusercontent.com,
+so the workflow commits the rendered image to the repo first, then triggers publish.
+
+Token refresh:
+The long-lived token lasts ~60 days. Calling /refresh_access_token before it
+expires extends it for another 60 days.
+"""
+from __future__ import annotations
+
+import time
+from urllib.parse import quote
+
+import requests
+
+from . import config
+
+
+def public_image_url(image_relpath: str) -> str:
+    """Build the raw.githubusercontent.com URL for a committed image."""
+    if not config.GITHUB_REPO:
+        raise RuntimeError("GITHUB_REPO env var must be set, e.g. 'rayyanop61/gyaankhand'.")
+    safe_path = quote(image_relpath.lstrip("/"))
+    return (
+        f"https://raw.githubusercontent.com/{config.GITHUB_REPO}/"
+        f"{config.GITHUB_BRANCH}/{safe_path}"
+    )
+
+
+def _api_url(path: str) -> str:
+    return f"{config.IG_API_HOST}/{config.IG_API_VERSION}/{path.lstrip('/')}"
+
+
+def create_media_container(image_url: str, caption: str) -> str:
+    """Create the media container; returns container/creation ID."""
+    resp = requests.post(
+        _api_url(f"{config.IG_USER_ID}/media"),
+        data={
+            "image_url": image_url,
+            "caption": caption,
+            "access_token": config.IG_LONG_LIVED_TOKEN,
+        },
+        timeout=60,
+    )
+    resp.raise_for_status()
+    payload = resp.json()
+    container_id = payload.get("id")
+    if not container_id:
+        raise RuntimeError(f"No container id in response: {payload}")
+    return container_id
+
+
+def wait_for_container_ready(container_id: str, timeout_s: int = 120) -> None:
+    """Poll container status until FINISHED or timeout."""
+    deadline = time.time() + timeout_s
+    while time.time() < deadline:
+        resp = requests.get(
+            _api_url(container_id),
+            params={
+                "fields": "status_code,status",
+                "access_token": config.IG_LONG_LIVED_TOKEN,
+            },
+            timeout=30,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        status = data.get("status_code") or data.get("status", "")
+        if status in ("FINISHED", "PUBLISHED"):
+            return
+        if status in ("ERROR", "EXPIRED"):
+            raise RuntimeError(f"Container {container_id} failed: {data}")
+        time.sleep(3)
+    raise TimeoutError(f"Container {container_id} not ready after {timeout_s}s")
+
+
+def publish_container(container_id: str) -> str:
+    """Publish container; returns the published media ID."""
+    resp = requests.post(
+        _api_url(f"{config.IG_USER_ID}/media_publish"),
+        data={
+            "creation_id": container_id,
+            "access_token": config.IG_LONG_LIVED_TOKEN,
+        },
+        timeout=60,
+    )
+    resp.raise_for_status()
+    return resp.json().get("id", "")
+
+
+def post(image_url: str, caption: str) -> str:
+    """Full happy-path: create -> wait -> publish. Returns media ID."""
+    container_id = create_media_container(image_url, caption)
+    wait_for_container_ready(container_id)
+    return publish_container(container_id)
+
+
+def refresh_long_lived_token() -> dict:
+    """Refresh the long-lived token; returns {'access_token': str, 'expires_in': int}.
+
+    Should be called before the current token expires (every ~50 days is safe).
+    """
+    resp = requests.get(
+        f"{config.IG_API_HOST}/refresh_access_token",
+        params={
+            "grant_type": "ig_refresh_token",
+            "access_token": config.IG_LONG_LIVED_TOKEN,
+        },
+        timeout=30,
+    )
+    resp.raise_for_status()
+    return resp.json()
