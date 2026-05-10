@@ -34,7 +34,8 @@ FONT_HANDLE = FONTS_DIR / "NotoSans-Regular.ttf"
 IMG_WIDTH = 1080
 IMG_HEIGHT = 1920   # 9:16 for Reels
 REEL_DURATION = 30   # seconds
-OVERLAY_OPACITY = 140  # 0-255; darker = more readable text
+OVERLAY_COLOR = (180, 80, 20)   # warm orange tint
+OVERLAY_OPACITY = 120           # 0-255; keep low for a subtle wash
 DEVANAGARI_FONT_SIZE = 56
 IAST_FONT_SIZE = 36
 HANDLE_FONT_SIZE = 28
