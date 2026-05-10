@@ -1,4 +1,4 @@
-name: Daily Instagram Reel
+name: Daily Instagram Reel + YouTube Short
 
 on:
   schedule:
@@ -67,6 +67,15 @@ jobs:
           GITHUB_BRANCH:       ${{ github.ref_name }}
           IG_HANDLE:           ${{ vars.IG_HANDLE }}
         run: python -m src.main publish
+
+      - name: Publish to YouTube Shorts
+        env:
+          YT_CLIENT_ID:      ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET:  ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN:  ${{ secrets.YT_REFRESH_TOKEN }}
+          YT_CHANNEL_HANDLE: ${{ vars.YT_CHANNEL_HANDLE }}
+          IG_HANDLE:         ${{ vars.IG_HANDLE }}
+        run: python -m src.main publish-yt
 
       - name: Commit posted-state log
         run: |

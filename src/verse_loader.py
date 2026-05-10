@@ -77,3 +77,17 @@ def record_post(verse_id: str, image_relpath: str, ig_media_id: str) -> None:
         }
     )
     _save_state(state)
+
+
+def record_yt_video_id(yt_video_id: str) -> None:
+    """Attach a YouTube video ID to the most-recently-posted entry."""
+    state = _load_state()
+    entries = state.get("posted", [])
+    if not entries:
+        raise RuntimeError("No entries in posted.json to update with YouTube video ID.")
+    entries[-1]["yt_video_id"] = yt_video_id
+    _save_state(state)
+
+
+def load_verses() -> list[dict]:
+    return _load_verses()

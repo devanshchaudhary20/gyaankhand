@@ -72,6 +72,15 @@ GITHUB_BRANCH = os.getenv("GITHUB_BRANCH", "main")
 IG_HANDLE = os.getenv("IG_HANDLE", "")
 
 
+# --- YouTube API (OAuth 2.0 with offline refresh token) -----------------
+# Generate the refresh token once locally using scripts/youtube_auth_setup.py,
+# then store it as a GitHub secret (YT_REFRESH_TOKEN).
+YT_CLIENT_ID = os.getenv("YT_CLIENT_ID", "")
+YT_CLIENT_SECRET = os.getenv("YT_CLIENT_SECRET", "")
+YT_REFRESH_TOKEN = os.getenv("YT_REFRESH_TOKEN", "")
+YT_CHANNEL_HANDLE = os.getenv("YT_CHANNEL_HANDLE", "")  # e.g. @gyaankhand
+
+
 # --- Caption template ----------------------------------------------------
 HASHTAGS = (
     "#bhagavadgita #sanskrit #vedanta #hinduism #spirituality "
@@ -94,5 +103,23 @@ def assert_runtime_config() -> None:
     if missing:
         raise RuntimeError(
             f"Missing required environment variables: {', '.join(missing)}. "
+            "See .env.example."
+        )
+
+
+def assert_yt_config() -> None:
+    """Fail fast if YouTube credentials are missing."""
+    missing = [
+        name
+        for name, value in [
+            ("YT_CLIENT_ID", YT_CLIENT_ID),
+            ("YT_CLIENT_SECRET", YT_CLIENT_SECRET),
+            ("YT_REFRESH_TOKEN", YT_REFRESH_TOKEN),
+        ]
+        if not value
+    ]
+    if missing:
+        raise RuntimeError(
+            f"Missing required YouTube environment variables: {', '.join(missing)}. "
             "See .env.example."
         )

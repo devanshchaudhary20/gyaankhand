@@ -5,7 +5,10 @@ Subcommands:
                   This is what CI runs first; CI then commits posts/ and state/_pending.json.
   publish         Read state/_pending.json, call Instagram Graph API, record to state/posted.json.
                   CI runs this after the commit so the image URL is live.
-  all             Render + publish in one go (useful for local testing once the repo is set up).
+  publish-yt      Upload the most-recently-rendered video to YouTube Shorts.
+                  Reads the last entry from state/posted.json for the file path, then updates
+                  that entry with the YouTube video ID. Skips gracefully if YT creds are absent.
+  all             Render + publish (Instagram) + publish-yt in one go (local testing).
 
 Flags:
   --dry-run       (render mode) Skip writing the pending state file. Just renders the image.
@@ -21,6 +24,25 @@ from pathlib import Path
 from . import config, image_renderer, instagram_poster, verse_loader, video_renderer
 
 PENDING_FILE = config.STATE_DIR / "_pending.json"
+
+
+def build_yt_title(verse: dict) -> str:
+    title = f"{verse['source']} | Daily Sanskrit Verse #Shorts"
+    return title[:100]
+
+
+def build_yt_description(verse: dict) -> str:
+    parts = [
+        verse["translation_en"],
+        "",
+        f"— {verse['source']}",
+    ]
+    if config.YT_CHANNEL_HANDLE:
+        parts.extend(["", f"Subscribe to {config.YT_CHANNEL_HANDLE} for daily verses."])
+    elif config.IG_HANDLE:
+        parts.extend(["", f"Follow {config.IG_HANDLE} on Instagram for daily verses."])
+    parts.extend(["", config.HASHTAGS, "", "#Shorts"])
+    return "\n".join(parts)
 
 
 def build_caption(verse: dict) -> str:
@@ -103,6 +125,59 @@ def publish_step(info: dict | None = None) -> str:
     return media_id
 
 
+def publish_yt_step() -> str:
+    """Upload the most-recently-rendered video to YouTube Shorts.
+
+    Reads the last posted.json entry (written by publish_step) to find the
+    local video file, reconstructs the caption from verses.json, uploads,
+    then records the YouTube video ID back into posted.json.
+
+    Returns the YouTube video ID, or "" if credentials are not configured.
+    """
+    if not (config.YT_CLIENT_ID and config.YT_CLIENT_SECRET and config.YT_REFRESH_TOKEN):
+        print("[gyaankhand] YouTube credentials not set — skipping YouTube upload.")
+        return ""
+
+    from . import youtube_poster  # imported here so missing google deps don't break other cmds
+
+    if not config.POSTED_FILE.exists():
+        raise RuntimeError("No posted.json found. Run 'publish' first.")
+
+    with config.POSTED_FILE.open("r", encoding="utf-8") as f:
+        state = json.load(f)
+
+    entries = state.get("posted", [])
+    if not entries:
+        raise RuntimeError("posted.json has no entries.")
+
+    last = entries[-1]
+    video_path = config.ROOT / last["image"]
+    if not video_path.exists():
+        raise RuntimeError(f"Video file not found: {video_path}")
+
+    verse_id = last["verse_id"]
+    verses = verse_loader.load_verses()
+    verse = next((v for v in verses if v["id"] == verse_id), None)
+
+    if verse:
+        title = build_yt_title(verse)
+        description = build_yt_description(verse)
+    else:
+        title = "Daily Sanskrit Verse #Shorts"
+        description = f"Daily Sanskrit verse.\n\n{config.HASHTAGS}\n\n#Shorts"
+
+    print(f"[gyaankhand] uploading to YouTube Shorts: {video_path.name}")
+    video_id = youtube_poster.post(
+        video_path=video_path,
+        title=title,
+        description=description,
+    )
+    print(f"[gyaankhand] YouTube video id: {video_id}")
+
+    verse_loader.record_yt_video_id(video_id)
+    return video_id
+
+
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Gyaankhand daily verse poster.")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -110,8 +185,9 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     r = sub.add_parser("render", help="Render only.")
     r.add_argument("--dry-run", action="store_true")
 
-    sub.add_parser("publish", help="Publish previously-rendered post.")
-    sub.add_parser("all", help="Render and publish in one go.")
+    sub.add_parser("publish", help="Publish previously-rendered post to Instagram.")
+    sub.add_parser("publish-yt", help="Upload most-recently-rendered video to YouTube Shorts.")
+    sub.add_parser("all", help="Render, publish to Instagram, and upload to YouTube Shorts.")
     return p.parse_args(argv)
 
 
@@ -121,9 +197,12 @@ def main(argv: list[str] | None = None) -> int:
         render_step(dry_run=args.dry_run)
     elif args.cmd == "publish":
         publish_step()
+    elif args.cmd == "publish-yt":
+        publish_yt_step()
     elif args.cmd == "all":
         info = render_step(dry_run=False)
         publish_step(info)
+        publish_yt_step()
     return 0
 
 
