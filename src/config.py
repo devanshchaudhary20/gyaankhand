@@ -17,6 +17,7 @@ except ImportError:
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 BASE_IMAGES_DIR = DATA_DIR / "base_images"
+AUDIO_DIR = DATA_DIR / "audio"
 VERSES_FILE = DATA_DIR / "verses.json"
 FONTS_DIR = ROOT / "fonts"
 STATE_DIR = ROOT / "state"
