@@ -38,7 +38,7 @@ REEL_DURATION = 30   # seconds
 
 # Text panel overlay (drawn only behind the text block, not the whole image)
 OVERLAY_COLOR = (255, 187, 153)   # warm orange tint
-OVERLAY_OPACITY = 100           # 0-255
+OVERLAY_OPACITY = 110           # 0-255
 TEXT_PANEL_PADDING = 50         # pixels around the text inside the panel
 TEXT_PANEL_CORNER_RADIUS = 28
 
