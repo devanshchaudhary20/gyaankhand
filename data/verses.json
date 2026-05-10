@@ -158,5 +158,413 @@
     "translation_en": "May He protect us both. May He nourish us both. May we work together with great vigor. May our study be illumined; may we never harbor ill will. Om peace, peace, peace.",
     "source": "Taittiriya Upanishad (Krishna Yajur Veda)",
     "tags": ["shanti-mantra", "upanishad", "yajur-veda"]
+  },
+  {
+    "id": "bg-2-14",
+    "text_devanagari": "मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः।\nआगमापायिनोऽनित्यास्तांस्तितिक्षस्व भारत॥",
+    "text_iast": "mātrā-sparśās tu kaunteya śītoṣṇa-sukha-duḥkha-dāḥ |\nāgamāpāyino 'nityās tāṁs titikṣasva bhārata ||",
+    "translation_en": "The contacts of the senses with their objects give rise to cold and heat, pleasure and pain. They come and go — impermanent. Endure them, O Bharata.",
+    "source": "Bhagavad Gita 2.14",
+    "tags": ["impermanence", "endurance", "senses"]
+  },
+  {
+    "id": "bg-2-23",
+    "text_devanagari": "नैनं छिन्दन्ति शस्त्राणि नैनं दहति पावकः।\nन चैनं क्लेदयन्त्यापो न शोषयति मारुतः॥",
+    "text_iast": "nainaṁ chindanti śastrāṇi nainaṁ dahati pāvakaḥ |\nna cainaṁ kledayanty āpo na śoṣayati mārutaḥ ||",
+    "translation_en": "Weapons cannot cut it, fire cannot burn it, water cannot wet it, and wind cannot dry it.",
+    "source": "Bhagavad Gita 2.23",
+    "tags": ["atman", "immortality", "self"]
+  },
+  {
+    "id": "bg-3-27",
+    "text_devanagari": "प्रकृतेः क्रियमाणानि गुणैः कर्माणि सर्वशः।\nअहंकारविमूढात्मा कर्ताहमिति मन्यते॥",
+    "text_iast": "prakṛteḥ kriyamāṇāni guṇaiḥ karmāṇi sarvaśaḥ |\nahaṅkāra-vimūḍhātmā kartāham iti manyate ||",
+    "translation_en": "All actions are performed by the gunas of nature alone. One whose mind is deluded by ego thinks: 'I am the doer.'",
+    "source": "Bhagavad Gita 3.27",
+    "tags": ["ego", "karma-yoga", "nature"]
+  },
+  {
+    "id": "bg-4-8",
+    "text_devanagari": "परित्राणाय साधूनां विनाशाय च दुष्कृताम्।\nधर्मसंस्थापनार्थाय सम्भवामि युगे युगे॥",
+    "text_iast": "paritrāṇāya sādhūnāṁ vināśāya ca duṣkṛtām |\ndharma-saṁsthāpanārthāya sambhavāmi yuge yuge ||",
+    "translation_en": "For the protection of the righteous, for the destruction of the wicked, and to firmly establish dharma — I am born in age after age.",
+    "source": "Bhagavad Gita 4.8",
+    "tags": ["avatara", "dharma", "krishna"]
+  },
+  {
+    "id": "bg-5-18",
+    "text_devanagari": "विद्याविनयसम्पन्ने ब्राह्मणे गवि हस्तिनि।\nशुनि चैव श्वपाके च पण्डिताः समदर्शिनः॥",
+    "text_iast": "vidyā-vinaya-sampanne brāhmaṇe gavi hastini |\nśuni caiva śva-pāke ca paṇḍitāḥ sama-darśinaḥ ||",
+    "translation_en": "The wise see with equal vision a learned brahmin, a cow, an elephant, a dog, and an outcaste.",
+    "source": "Bhagavad Gita 5.18",
+    "tags": ["equal-vision", "wisdom", "advaita"]
+  },
+  {
+    "id": "bg-6-34",
+    "text_devanagari": "चञ्चलं हि मनः कृष्ण प्रमाथि बलवद् दृढम्।\nतस्याहं निग्रहं मन्ये वायोरिव सुदुष्करम्॥",
+    "text_iast": "cañcalaṁ hi manaḥ kṛṣṇa pramāthi balavad dṛḍham |\ntasyāhaṁ nigrahaṁ manye vāyor iva suduṣkaram ||",
+    "translation_en": "The mind is restless, turbulent, powerful, and obstinate, O Krishna. To restrain it seems to me as difficult as restraining the wind.",
+    "source": "Bhagavad Gita 6.34",
+    "tags": ["mind", "discipline", "yoga"]
+  },
+  {
+    "id": "bg-7-19",
+    "text_devanagari": "बहूनां जन्मनामन्ते ज्ञानवान् मां प्रपद्यते।\nवासुदेवः सर्वमिति स महात्मा सुदुर्लभः॥",
+    "text_iast": "bahūnāṁ janmanām ante jñānavān māṁ prapadyate |\nvāsudevaḥ sarvam iti sa mahātmā su-durlabhaḥ ||",
+    "translation_en": "At the end of many births, the man of wisdom surrenders to me, knowing Vasudeva is all. Such a great soul is very rare.",
+    "source": "Bhagavad Gita 7.19",
+    "tags": ["surrender", "jnana", "rare-soul"]
+  },
+  {
+    "id": "bg-9-26",
+    "text_devanagari": "पत्रं पुष्पं फलं तोयं यो मे भक्त्या प्रयच्छति।\nतदहं भक्त्युपहृतमश्नामि प्रयतात्मनः॥",
+    "text_iast": "patraṁ puṣpaṁ phalaṁ toyaṁ yo me bhaktyā prayacchati |\ntad ahaṁ bhakty-upahṛtam aśnāmi prayatātmanaḥ ||",
+    "translation_en": "Whoever offers me a leaf, a flower, a fruit, or water with devotion — that loving offering, made with a pure heart, I accept.",
+    "source": "Bhagavad Gita 9.26",
+    "tags": ["bhakti", "devotion", "simplicity"]
+  },
+  {
+    "id": "bg-10-20",
+    "text_devanagari": "अहमात्मा गुडाकेश सर्वभूताशयस्थितः।\nअहमादिश्च मध्यं च भूतानामन्त एव च॥",
+    "text_iast": "aham ātmā guḍākeśa sarva-bhūtāśaya-sthitaḥ |\naham ādiś ca madhyaṁ ca bhūtānām anta eva ca ||",
+    "translation_en": "I am the Self, O Gudakesha, dwelling in the heart of all beings. I am the beginning, the middle, and the very end of all creatures.",
+    "source": "Bhagavad Gita 10.20",
+    "tags": ["atman", "krishna", "omnipresence"]
+  },
+  {
+    "id": "bg-12-13",
+    "text_devanagari": "अद्वेष्टा सर्वभूतानां मैत्रः करुण एव च।\nनिर्ममो निरहंकारः समदुःखसुखः क्षमी॥",
+    "text_iast": "adveṣṭā sarva-bhūtānāṁ maitraḥ karuṇa eva ca |\nnirmamo nirahaṅkāraḥ sama-duḥkha-sukhaḥ kṣamī ||",
+    "translation_en": "One who bears hatred toward no being, who is friendly and compassionate, free from possessiveness and ego, equal in pleasure and pain, and forgiving — such a devotee is dear to me.",
+    "source": "Bhagavad Gita 12.13",
+    "tags": ["compassion", "devotion", "divine-qualities"]
+  },
+  {
+    "id": "bg-13-28",
+    "text_devanagari": "समं सर्वेषु भूतेषु तिष्ठन्तं परमेश्वरम्।\nविनश्यत्स्वविनश्यन्तं यः पश्यति स पश्यति॥",
+    "text_iast": "samaṁ sarveṣu bhūteṣu tiṣṭhantaṁ parameśvaram |\nvinaśyatsv avinaśyantaṁ yaḥ paśyati sa paśyati ||",
+    "translation_en": "One who sees the Supreme Lord dwelling equally in all beings — the imperishable amid the perishable — that one truly sees.",
+    "source": "Bhagavad Gita 13.28",
+    "tags": ["equal-vision", "atman", "wisdom"]
+  },
+  {
+    "id": "bg-18-65",
+    "text_devanagari": "मन्मना भव मद्भक्तो मद्याजी मां नमस्कुरु।\nमामेवैष्यसि सत्यं ते प्रतिजाने प्रियोऽसि मे॥",
+    "text_iast": "man-manā bhava mad-bhakto mad-yājī māṁ namaskuru |\nmām evaiṣyasi satyaṁ te pratijāne priyo 'si me ||",
+    "translation_en": "Fix your mind on me, be devoted to me, worship me, bow to me. I truly promise — you will come to me, for you are very dear to me.",
+    "source": "Bhagavad Gita 18.65",
+    "tags": ["bhakti", "promise", "krishna"]
+  },
+  {
+    "id": "ag-2-5",
+    "text_devanagari": "न पृथ्वी न जलं नाग्निर्न वायुर्द्यौर्न वा भवान्।\nएषां साक्षिणमात्मानं चिद्रूपं विद्धि मुक्तये॥",
+    "text_iast": "na pṛthvī na jalaṁ nāgnir na vāyur dyaur na vā bhavān |\neṣāṁ sākṣiṇam ātmānaṁ cid-rūpaṁ viddhi muktaye ||",
+    "translation_en": "You are not earth, not water, not fire, not air, not space. Know yourself as the witness of all these — pure consciousness — and be free.",
+    "source": "Ashtavakra Gita 2.5",
+    "tags": ["advaita", "consciousness", "freedom"]
+  },
+  {
+    "id": "ag-15-3",
+    "text_devanagari": "न त्वं देहो न ते देहो भोक्ता कर्ता न वा भवान्।\nचिद्रूपोऽसि सदा साक्षी निराकारः सुखं चर॥",
+    "text_iast": "na tvaṁ deho na te deho bhoktā kartā na vā bhavān |\ncid-rūpo 'si sadā sākṣī nirākāraḥ sukhaṁ cara ||",
+    "translation_en": "You are not the body, nor does the body belong to you. You are neither the experiencer nor the doer. You are pure consciousness, the eternal witness — formless. Live in joy.",
+    "source": "Ashtavakra Gita 15.3",
+    "tags": ["advaita", "witness", "freedom"]
+  },
+  {
+    "id": "katha-1-2-20",
+    "text_devanagari": "अणोरणीयान् महतो महीयान्\nआत्मास्य जन्तोर्निहितो गुहायाम्।\nतमक्रतुः पश्यति वीतशोको\nधातुप्रसादान्महिमानमात्मनः॥",
+    "text_iast": "aṇor aṇīyān mahato mahīyān\nātmāsya jantor nihito guhāyām |\ntam akratuḥ paśyati vīta-śoko\ndhātu-prasādān mahimānam ātmanaḥ ||",
+    "translation_en": "Subtler than the subtle, greater than the great — the Self is hidden in the cave of the heart. The desireless one, freed from grief, by the grace of the Creator, sees the majesty of the Self.",
+    "source": "Katha Upanishad 1.2.20 (Krishna Yajur Veda)",
+    "tags": ["atman", "upanishad", "self"]
+  },
+  {
+    "id": "katha-2-1-1",
+    "text_devanagari": "परांचि खानि व्यतृणत् स्वयम्भू-\nस्तस्मात् पराङ् पश्यति नान्तरात्मन्।\nकश्चिद् धीरः प्रत्यगात्मानमैक्ष-\nदावृत्तचक्षुरमृतत्वमिच्छन्॥",
+    "text_iast": "parāñci khāni vyatṛṇat svayaṁbhūs\ntasmāt parāṅ paśyati nāntar-ātman |\nkaścid dhīraḥ pratyag-ātmānam aikṣad\nāvṛtta-cakṣur amṛtatvam icchan ||",
+    "translation_en": "The self-born pierced the openings of the senses outward; thus one looks outward, not at the inner Self. A rare wise one, longing for immortality, turns the gaze inward and sees the Self within.",
+    "source": "Katha Upanishad 2.1.1 (Krishna Yajur Veda)",
+    "tags": ["upanishad", "senses", "self-inquiry"]
+  },
+  {
+    "id": "kena-1-1",
+    "text_devanagari": "केनेषितं पतति प्रेषितं मनः\nकेन प्राणः प्रथमः प्रैति युक्तः।\nकेनेषितां वाचमिमां वदन्ति\nचक्षुः श्रोत्रं क उ देवो युनक्ति॥",
+    "text_iast": "keneṣitaṁ patati preṣitaṁ manaḥ\nkena prāṇaḥ prathamaḥ praiti yuktaḥ |\nkeneṣitāṁ vācam imāṁ vadanti\ncakṣuḥ śrotraṁ ka u devo yunakti ||",
+    "translation_en": "By whose will does the mind fly to its objects? By whom is the first breath set in motion? By whose impulse are these words spoken? What deity directs the eye and ear?",
+    "source": "Kena Upanishad 1.1 (Sama Veda)",
+    "tags": ["upanishad", "consciousness", "inquiry"]
+  },
+  {
+    "id": "chandogya-3-14-1",
+    "text_devanagari": "सर्वं खल्विदं ब्रह्म।\nतज्जलानिति शान्त उपासीत।",
+    "text_iast": "sarvaṁ khalv idaṁ brahma |\ntaj-jalān iti śānta upāsīta |",
+    "translation_en": "All this is indeed Brahman — from it all is born, into it all dissolves, and by it all breathes. Meditate on this in stillness.",
+    "source": "Chandogya Upanishad 3.14.1 (Sama Veda)",
+    "tags": ["brahman", "upanishad", "unity"]
+  },
+  {
+    "id": "taittiriya-2-1-1",
+    "text_devanagari": "सत्यं ज्ञानमनन्तं ब्रह्म।\nयो वेद निहितं गुहायां परमे व्योमन्।\nसोऽश्नुते सर्वान् कामान् सह ब्रह्मणा विपश्चिता॥",
+    "text_iast": "satyaṁ jñānam anantaṁ brahma |\nyo veda nihitaṁ guhāyāṁ parame vyoman |\nso 'śnute sarvān kāmān saha brahmaṇā vipaścitā ||",
+    "translation_en": "Brahman is truth, knowledge, infinity. One who knows it hidden in the cave of the heart, in the highest sky — attains all desires alongside the all-knowing Brahman.",
+    "source": "Taittiriya Upanishad 2.1.1 (Krishna Yajur Veda)",
+    "tags": ["brahman", "upanishad", "truth"]
+  },
+  {
+    "id": "mundaka-3-1-2",
+    "text_devanagari": "द्वा सुपर्णा सयुजा सखाया\nसमानं वृक्षं परिषस्वजाते।\nतयोरन्यः पिप्पलं स्वाद्वत्त्य-\nनश्नन्नन्योऽभिचाकशीति॥",
+    "text_iast": "dvā suparṇā sayujā sakhāyā\nsamānaṁ vṛkṣaṁ pariṣasvajāte |\ntayor anyaḥ pippalaṁ svādy atty\nanaśnann anyo 'bhicākaśīti ||",
+    "translation_en": "Two birds, close companions, cling to the same tree. One eats the sweet fruits; the other watches without eating.",
+    "source": "Mundaka Upanishad 3.1.2 (Atharva Veda)",
+    "tags": ["atman", "witness", "upanishad"]
+  },
+  {
+    "id": "ys-1-2",
+    "text_devanagari": "योगश्चित्तवृत्तिनिरोधः॥",
+    "text_iast": "yogaś citta-vṛtti-nirodhaḥ ||",
+    "translation_en": "Yoga is the cessation of the fluctuations of the mind.",
+    "source": "Yoga Sutras of Patanjali 1.2",
+    "tags": ["yoga", "mind", "patanjali"]
+  },
+  {
+    "id": "ys-1-3",
+    "text_devanagari": "तदा द्रष्टुः स्वरूपेऽवस्थानम्॥",
+    "text_iast": "tadā draṣṭuḥ svarūpe 'vasthānam ||",
+    "translation_en": "Then the seer abides in its own true nature.",
+    "source": "Yoga Sutras of Patanjali 1.3",
+    "tags": ["yoga", "self", "patanjali"]
+  },
+  {
+    "id": "nirvana-shatakam-1",
+    "text_devanagari": "मनोबुद्ध्यहंकारचित्तानि नाहं\nन च श्रोत्रजिह्वे न च घ्राणनेत्रे।\nन च व्योम भूमिर् न तेजो न वायुः\nचिदानन्दरूपः शिवोऽहं शिवोऽहम्॥",
+    "text_iast": "mano-buddhy-ahaṅkāra-cittāni nāhaṁ\nna ca śrotra-jihve na ca ghrāṇa-netre |\nna ca vyoma bhūmir na tejo na vāyuḥ\ncid-ānanda-rūpaḥ śivo 'haṁ śivo 'ham ||",
+    "translation_en": "I am not mind, intellect, ego, or memory; not ear or tongue, not nose or eyes; not space, earth, fire, or wind — I am the form of consciousness-bliss: I am Shiva, I am Shiva.",
+    "source": "Nirvana Shatakam 1 (Adi Shankaracharya)",
+    "tags": ["shiva", "advaita", "shankaracharya"]
+  },
+  {
+    "id": "bhaja-govindam-1",
+    "text_devanagari": "भज गोविन्दं भज गोविन्दं\nभज गोविन्दं मूढमते।\nसम्प्राप्ते सन्निहिते काले\nनहि नहि रक्षति डुकृञ्करणे॥",
+    "text_iast": "bhaja govindaṁ bhaja govindaṁ\nbhaja govindaṁ mūḍha-mate |\nsaṁprāpte sannihite kāle\nnahi nahi rakṣati ḍukṛñ-karaṇe ||",
+    "translation_en": "Worship Govinda! Worship Govinda! Worship Govinda, O fool! When death draws near, no rules of grammar will save you.",
+    "source": "Bhaja Govindam 1 (Adi Shankaracharya)",
+    "tags": ["bhakti", "shankaracharya", "wisdom"]
+  },
+  {
+    "id": "gayatri",
+    "text_devanagari": "ॐ भूर्भुवः स्वः\nतत्सवितुर्वरेण्यं\nभर्गो देवस्य धीमहि\nधियो यो नः प्रचोदयात्॥",
+    "text_iast": "oṁ bhūr bhuvaḥ svaḥ |\ntat savitur vareṇyaṁ\nbhargo devasya dhīmahi |\ndhiyo yo naḥ pracodayāt ||",
+    "translation_en": "We meditate on the supreme radiance of the divine Sun who pervades the three worlds — may that light illuminate our intellect.",
+    "source": "Rig Veda 3.62.10 (Gayatri Mantra)",
+    "tags": ["mantra", "vedas", "rig-veda"]
+  },
+  {
+    "id": "maha-mrityunjaya",
+    "text_devanagari": "ॐ त्र्यम्बकं यजामहे\nसुगन्धिं पुष्टिवर्धनम्।\nउर्वारुकमिव बन्धनान्\nमृत्योर्मुक्षीय माऽमृतात्॥",
+    "text_iast": "oṁ tryambakaṁ yajāmahe\nsugandhiṁ puṣṭi-vardhanam |\nurvārukam iva bandhanān\nmṛtyor mukṣīya mā 'mṛtāt ||",
+    "translation_en": "We worship the three-eyed Lord Shiva, the fragrant nourisher of all. May he liberate us from death as a ripened gourd falls from the vine — and grant us immortality.",
+    "source": "Rig Veda 7.59.12 (Maha Mrityunjaya Mantra)",
+    "tags": ["shiva", "mantra", "liberation"]
+  },
+  {
+    "id": "bp-1-5-11",
+    "text_devanagari": "तद्वाग्विसर्गो जनताघविप्लवो\nयस्मिन् प्रतिश्लोकमबद्धवत्यपि।\nनामान्यनन्तस्य यशोऽङ्कितानि यत्\nशृण्वन्ति गायन्ति गृणन्ति साधवः॥",
+    "text_iast": "tad-vāg-visargo janatāgha-viplavo\nyasmin prati-ślokam abaddha-vaty api |\nnāmāny anantasya yaśo 'ṅkitāni yat\nśṛṇvanti gāyanti gṛṇanti sādhavaḥ ||",
+    "translation_en": "That speech which names the glories of the Infinite Lord in every verse — even if imperfectly composed — and which the saints hear, sing, and accept: it is a flood that washes away the world's sins.",
+    "source": "Bhagavata Purana 1.5.11",
+    "tags": ["bhakti", "scripture", "glory"]
+  },
+  {
+    "id": "vcm-3",
+    "text_devanagari": "दुर्लभं त्रयमेवैतद् देवानुग्रहहेतुकम्।\nमनुष्यत्वं मुमुक्षुत्वं महापुरुषसंश्रयः॥",
+    "text_iast": "durlabhaṁ trayam evaitad devānugraha-hetukam |\nmanuṣyatvaṁ mumukṣutvaṁ mahā-puruṣa-saṁśrayaḥ ||",
+    "translation_en": "Three things are rare and obtained only by divine grace — human birth, the burning desire for liberation, and the shelter of a great soul.",
+    "source": "Vivekachudamani 3 (Adi Shankaracharya)",
+    "tags": ["liberation", "shankaracharya", "human-birth"]
+  },
+  {
+    "id": "bg-2-17",
+    "text_devanagari": "अविनाशि तु तद्विद्धि येन सर्वमिदं ततम्।\nविनाशमव्ययस्यास्य न कश्चित् कर्तुमर्हति॥",
+    "text_iast": "avināśi tu tad viddhi yena sarvam idaṁ tatam |\nvināśam avyayasyāsya na kaścit kartum arhati ||",
+    "translation_en": "Know that to be indestructible by which all this is pervaded. No one is capable of bringing destruction to the imperishable.",
+    "source": "Bhagavad Gita 2.17",
+    "tags": ["atman", "indestructible", "self"]
+  },
+  {
+    "id": "bg-2-19",
+    "text_devanagari": "य एनं वेत्ति हन्तारं यश्चैनं मन्यते हतम्।\nउभौ तौ न विजानीतो नायं हन्ति न हन्यते॥",
+    "text_iast": "ya enaṁ vetti hantāraṁ yaś cainaṁ manyate hatam |\nubhau tau na vijānīto nāyaṁ hanti na hanyate ||",
+    "translation_en": "One who thinks this slays, and one who thinks this is slain — both fail to perceive the truth. It neither slays nor is it slain.",
+    "source": "Bhagavad Gita 2.19",
+    "tags": ["atman", "immortality", "self"]
+  },
+  {
+    "id": "bg-2-45",
+    "text_devanagari": "त्रैगुण्यविषया वेदा निस्त्रैगुण्यो भवार्जुन।\nनिर्द्वन्द्वो नित्यसत्त्वस्थो निर्योगक्षेम आत्मवान्॥",
+    "text_iast": "trai-guṇya-viṣayā vedā nis-trai-guṇyo bhavārjuna |\nnirdvandvo nitya-sattva-stho niryoga-kṣema ātmavān ||",
+    "translation_en": "The Vedas deal with the three gunas; be free of them, O Arjuna. Beyond duality, rooted ever in pure being, free from getting and keeping — abide in the Self.",
+    "source": "Bhagavad Gita 2.45",
+    "tags": ["gunas", "detachment", "self"]
+  },
+  {
+    "id": "bg-2-48",
+    "text_devanagari": "योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय।\nसिद्ध्यसिद्ध्योः समो भूत्वा समत्वं योग उच्यते॥",
+    "text_iast": "yoga-sthaḥ kuru karmāṇi saṅgaṁ tyaktvā dhanañjaya |\nsiddhy-asiddhyoḥ samo bhūtvā samatvaṁ yoga ucyate ||",
+    "translation_en": "Established in yoga, perform actions abandoning attachment, O Dhananjaya — equal in success and failure. This equanimity is called yoga.",
+    "source": "Bhagavad Gita 2.48",
+    "tags": ["karma-yoga", "equanimity", "action"]
+  },
+  {
+    "id": "bg-3-21",
+    "text_devanagari": "यद्यदाचरति श्रेष्ठस्तत्तदेवेतरो जनः।\nस यत् प्रमाणं कुरुते लोकस्तदनुवर्तते॥",
+    "text_iast": "yad yad ācarati śreṣṭhas tat tad evetaro janaḥ |\nsa yat pramāṇaṁ kurute lokas tad anuvartate ||",
+    "translation_en": "Whatever a great person does, others follow. Whatever standard one sets, the world follows.",
+    "source": "Bhagavad Gita 3.21",
+    "tags": ["leadership", "example", "dharma"]
+  },
+  {
+    "id": "bg-3-37",
+    "text_devanagari": "काम एष क्रोध एष रजोगुणसमुद्भवः।\nमहाशनो महापाप्मा विद्ध्येनमिह वैरिणम्॥",
+    "text_iast": "kāma eṣa krodha eṣa rajo-guṇa-samudbhavaḥ |\nmahāśano mahā-pāpmā viddhy enam iha vairiṇam ||",
+    "translation_en": "It is desire, it is anger — born of the quality of passion — all-consuming and most sinful. Know this to be the enemy.",
+    "source": "Bhagavad Gita 3.37",
+    "tags": ["desire", "anger", "enemy"]
+  },
+  {
+    "id": "bg-4-38",
+    "text_devanagari": "न हि ज्ञानेन सदृशं पवित्रमिह विद्यते।\nतत्स्वयं योगसंसिद्धः कालेनात्मनि विन्दति॥",
+    "text_iast": "na hi jñānena sadṛśaṁ pavitram iha vidyate |\ntat svayaṁ yoga-saṁsiddhaḥ kālenātmani vindati ||",
+    "translation_en": "Nothing in this world purifies like knowledge. One who is perfected through yoga finds it within oneself in time.",
+    "source": "Bhagavad Gita 4.38",
+    "tags": ["knowledge", "purity", "yoga"]
+  },
+  {
+    "id": "bg-4-39",
+    "text_devanagari": "श्रद्धावाँल्लभते ज्ञानं तत्परः संयतेन्द्रियः।\nज्ञानं लब्ध्वा परां शान्तिमचिरेणाधिगच्छति॥",
+    "text_iast": "śraddhāvāl labhate jñānaṁ tat-paraḥ saṁyatendriyaḥ |\njñānaṁ labdhvā parāṁ śāntim acireṇādhigacchati ||",
+    "translation_en": "With faith, devoted to it, with senses mastered — one attains knowledge. Having attained knowledge, one quickly reaches the highest peace.",
+    "source": "Bhagavad Gita 4.39",
+    "tags": ["faith", "knowledge", "peace"]
+  },
+  {
+    "id": "bg-6-19",
+    "text_devanagari": "यथा दीपो निवातस्थो नेङ्गते सोपमा स्मृता।\nयोगिनो यतचित्तस्य युञ्जतो योगमात्मनः॥",
+    "text_iast": "yathā dīpo nivātastho neṅgate sopamā smṛtā |\nyogino yata-cittasya yuñjato yogam ātmanaḥ ||",
+    "translation_en": "As a lamp sheltered from wind does not flicker — this is the image recalled for the yogi of restrained mind, absorbed in the yoga of the Self.",
+    "source": "Bhagavad Gita 6.19",
+    "tags": ["yoga", "mind", "steadiness"]
+  },
+  {
+    "id": "bg-6-25",
+    "text_devanagari": "शनैः शनैरुपरमेद् बुद्ध्या धृतिगृहीतया।\nआत्मसंस्थं मनः कृत्वा न किञ्चिदपि चिन्तयेत्॥",
+    "text_iast": "śanaiḥ śanair uparamed buddhyā dhṛti-gṛhītayā |\nātma-saṁsthaṁ manaḥ kṛtvā na kiñcid api cintayet ||",
+    "translation_en": "Gradually, with patience and intelligence, let the mind be withdrawn. Established in the Self — let one think of nothing else.",
+    "source": "Bhagavad Gita 6.25",
+    "tags": ["meditation", "mind", "yoga"]
+  },
+  {
+    "id": "bg-8-5",
+    "text_devanagari": "अन्तकाले च मामेव स्मरन् मुक्त्वा कलेवरम्।\nयः प्रयाति स मद्भावं याति नास्त्यत्र संशयः॥",
+    "text_iast": "anta-kāle ca mām eva smaran muktvā kalevaram |\nyaḥ prayāti sa mad-bhāvaṁ yāti nāsty atra saṁśayaḥ ||",
+    "translation_en": "Whoever at the moment of death remembers me alone and leaves the body — comes to my state. Of this there is no doubt.",
+    "source": "Bhagavad Gita 8.5",
+    "tags": ["death", "remembrance", "liberation"]
+  },
+  {
+    "id": "bg-10-41",
+    "text_devanagari": "यद्यद्विभूतिमत्सत्त्वं श्रीमदूर्जितमेव वा।\nतत्तदेवावगच्छ त्वं मम तेजोंऽशसम्भवम्॥",
+    "text_iast": "yad yad vibhūtimat sattvaṁ śrīmad ūrjitam eva vā |\ntat tad evāvagaccha tvaṁ mama tejo-'ṁśa-sambhavam ||",
+    "translation_en": "Whatever is glorious, prosperous, or powerful — know that it is born from a spark of my splendor.",
+    "source": "Bhagavad Gita 10.41",
+    "tags": ["vibhuti", "glory", "krishna"]
+  },
+  {
+    "id": "bg-11-32",
+    "text_devanagari": "कालोऽस्मि लोकक्षयकृत् प्रवृद्धो\nलोकान्समाहर्तुमिह प्रवृत्तः।\nऋतेऽपि त्वां न भविष्यन्ति सर्वे\nयेऽवस्थिताः प्रत्यनीकेषु योधाः॥",
+    "text_iast": "kālo 'smi loka-kṣaya-kṛt pravṛddho\nlokān samāhartum iha pravṛttaḥ |\nṛte 'pi tvāṁ na bhaviṣyanti sarve\nye 'vasthitāḥ praty-anīkeṣu yodhāḥ ||",
+    "translation_en": "I am Time, the great destroyer of worlds, come to consume all. Even without you, all these warriors arrayed in opposing armies shall cease to be.",
+    "source": "Bhagavad Gita 11.32",
+    "tags": ["time", "vishvarupa", "krishna"]
+  },
+  {
+    "id": "bg-14-19",
+    "text_devanagari": "नान्यं गुणेभ्यः कर्तारं यदा द्रष्टानुपश्यति।\nगुणेभ्यश्च परं वेत्ति मद्भावं सोऽधिगच्छति॥",
+    "text_iast": "nānyaṁ guṇebhyaḥ kartāraṁ yadā draṣṭānupaśyati |\nguṇebhyaś ca paraṁ vetti mad-bhāvaṁ so 'dhigacchati ||",
+    "translation_en": "When the seer perceives no doer other than the gunas, and knows what is beyond the gunas — one attains my state.",
+    "source": "Bhagavad Gita 14.19",
+    "tags": ["gunas", "witness", "liberation"]
+  },
+  {
+    "id": "bg-16-1",
+    "text_devanagari": "अभयं सत्त्वसंशुद्धिर् ज्ञानयोगव्यवस्थितिः।\nदानं दमश्च यज्ञश्च स्वाध्यायस्तप आर्जवम्॥",
+    "text_iast": "abhayaṁ sattva-saṁśuddhir jñāna-yoga-vyavasthitiḥ |\ndānaṁ damaś ca yajñaś ca svādhyāyas tapa ārjavam ||",
+    "translation_en": "Fearlessness, purity of heart, steadfastness in knowledge and yoga, charity, self-restraint, worship, scripture-study, austerity, uprightness — these are the divine qualities.",
+    "source": "Bhagavad Gita 16.1",
+    "tags": ["divine-qualities", "virtue", "dharma"]
+  },
+  {
+    "id": "ag-1-1",
+    "text_devanagari": "जनक उवाच।\nकथं ज्ञानमवाप्नोति कथं मुक्तिर्भविष्यति।\nवैराग्यं च कथं प्राप्तमेतद् ब्रूहि मम प्रभो॥",
+    "text_iast": "janaka uvāca |\nkathaṁ jñānam avāpnoti kathaṁ muktir bhaviṣyati |\nvairāgyaṁ ca kathaṁ prāptam etad brūhi mama prabho ||",
+    "translation_en": "Janaka asked: How does one attain knowledge? How does liberation come about? And how is dispassion attained? Tell me this, O Lord.",
+    "source": "Ashtavakra Gita 1.1",
+    "tags": ["inquiry", "liberation", "knowledge"]
+  },
+  {
+    "id": "ag-18-1",
+    "text_devanagari": "भावाभावविकारश्च स्वभावादिति निश्चयी।\nनिर्विकारो गतक्लेशः सुखेनैवोपशाम्यति॥",
+    "text_iast": "bhāvābhāva-vikāraś ca svabhāvād iti niścayī |\nnirvikāro gata-kleśaḥ sukhenaivopaśāmyati ||",
+    "translation_en": "One who is certain that all arising and all dissolving is simply the play of one's own nature — becomes free of agitation, free of affliction, and rests easily in peace.",
+    "source": "Ashtavakra Gita 18.1",
+    "tags": ["advaita", "nature", "peace"]
+  },
+  {
+    "id": "isha-6",
+    "text_devanagari": "यस्तु सर्वाणि भूतानि आत्मन्येवानुपश्यति।\nसर्वभूतेषु चात्मानं ततो न विजुगुप्सते॥",
+    "text_iast": "yas tu sarvāṇi bhūtāni ātmany evānupaśyati |\nsarva-bhūteṣu cātmānaṁ tato na vijugupsate ||",
+    "translation_en": "One who sees all beings in the Self alone, and the Self in all beings — feels no revulsion toward any.",
+    "source": "Isha Upanishad 6 (Shukla Yajur Veda)",
+    "tags": ["unity", "upanishad", "self"]
+  },
+  {
+    "id": "isha-7",
+    "text_devanagari": "यस्मिन् सर्वाणि भूतानि आत्मैवाभूद् विजानतः।\nतत्र को मोहः कः शोक एकत्वमनुपश्यतः॥",
+    "text_iast": "yasmin sarvāṇi bhūtāni ātmaivābhūd vijānataḥ |\ntatra ko mohaḥ kaḥ śoka ekatvam anupaśyataḥ ||",
+    "translation_en": "When for the one who knows, all beings have become the Self itself — what delusion, what grief can there be for one who sees unity?",
+    "source": "Isha Upanishad 7 (Shukla Yajur Veda)",
+    "tags": ["unity", "upanishad", "freedom"]
+  },
+  {
+    "id": "katha-1-2-23",
+    "text_devanagari": "नायमात्मा प्रवचनेन लभ्यो\nन मेधया न बहुना श्रुतेन।\nयमेवैष वृणुते तेन लभ्य-\nस्तस्यैष आत्मा विवृणुते तनूं स्वाम्॥",
+    "text_iast": "nāyam ātmā pravacanena labhyo\nna medhayā na bahunā śrutena |\nyam evaisa vṛṇute tena labhyas\ntasyaiṣa ātmā vivṛṇute tanūṁ svām ||",
+    "translation_en": "This Self cannot be attained by study, nor by intellect, nor by much learning. The one whom it chooses — by that one alone is it attained; to that one the Self reveals its own nature.",
+    "source": "Katha Upanishad 1.2.23 (Krishna Yajur Veda)",
+    "tags": ["atman", "grace", "self-inquiry"]
+  },
+  {
+    "id": "katha-1-3-14",
+    "text_devanagari": "उत्तिष्ठत जाग्रत प्राप्य वरान्निबोधत।\nक्षुरस्य धारा निशिता दुरत्यया दुर्गं पथस्तत्कवयो वदन्ति॥",
+    "text_iast": "uttiṣṭhata jāgrata prāpya varān nibodhata |\nkṣurasya dhārā niśitā duratyayā durgaṁ pathas tat kavayo vadanti ||",
+    "translation_en": "Arise! Awake! Approach the great ones and learn. Sharp as a razor's edge, hard to traverse — so the wise declare is this path.",
+    "source": "Katha Upanishad 1.3.14 (Krishna Yajur Veda)",
+    "tags": ["awakening", "path", "upanishad"]
+  },
+  {
+    "id": "kena-1-4",
+    "text_devanagari": "यच्चक्षुषा न पश्यति येन चक्षूंषि पश्यति।\nतदेव ब्रह्म त्वं विद्धि नेदं यदिदमुपासते॥",
+    "text_iast": "yac cakṣuṣā na paśyati yena cakṣūṁṣi paśyati |\ntad eva brahma tvaṁ viddhi nedaṁ yad idam upāsate ||",
+    "translation_en": "That which the eye cannot see, but by which the eye sees — know that alone as Brahman, not what people worship here.",
+    "source": "Kena Upanishad 1.4 (Sama Veda)",
+    "tags": ["brahman", "consciousness", "upanishad"]
+  },
+  {
+    "id": "kena-2-3",
+    "text_devanagari": "यस्यामतं तस्य मतं मतं यस्य न वेद सः।\nअविज्ञातं विजानतां विज्ञातमविजानताम्॥",
+    "text_iast": "yasyāmataṁ tasya mataṁ mataṁ yasya na veda saḥ |\navijñātaṁ vijānatāṁ vijñātam avijānatām ||",
+    "translation_en": "Those who think they do not know Brahman — know it. Those who think they know — do not know. It is unknown to those who know; known to those who say they do not know.",
+    "source": "Kena Upanishad 2.3 (Sama Veda)",
+    "tags": ["brahman", "paradox", "upanishad"]
   }
 ]

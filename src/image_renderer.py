@@ -123,11 +123,11 @@ def render_verse(
     """Render the post image and save to output_path. Returns output_path."""
     base = _prepare_base(base_image_path)
 
-    # Translucent dark overlay for text legibility
+    # Translucent orange overlay for warmth + text legibility
     overlay = Image.new(
         "RGBA",
         (config.IMG_WIDTH, config.IMG_HEIGHT),
-        (0, 0, 0, config.OVERLAY_OPACITY),
+        (*config.OVERLAY_COLOR, config.OVERLAY_OPACITY),
     )
     composite = Image.alpha_composite(base.convert("RGBA"), overlay)
     draw = ImageDraw.Draw(composite)

@@ -3,11 +3,11 @@
 Uses graph.instagram.com (NOT graph.facebook.com).
 
 Two-step publish:
-1. POST /{ig-user-id}/media         -> creates a media container, returns container ID
+1. POST /{ig-user-id}/media         -> creates a Reels container, returns container ID
 2. POST /{ig-user-id}/media_publish -> publishes the container
 
-The image MUST be reachable at a public URL. We host it via raw.githubusercontent.com,
-so the workflow commits the rendered image to the repo first, then triggers publish.
+The video MUST be reachable at a public URL. We host it via raw.githubusercontent.com,
+so the workflow commits the rendered video to the repo first, then triggers publish.
 
 Token refresh:
 The long-lived token lasts ~60 days. Calling /refresh_access_token before it
@@ -23,11 +23,11 @@ import requests
 from . import config
 
 
-def public_image_url(image_relpath: str) -> str:
-    """Build the raw.githubusercontent.com URL for a committed image."""
+def public_media_url(relpath: str) -> str:
+    """Build the raw.githubusercontent.com URL for a committed file."""
     if not config.GITHUB_REPO:
-        raise RuntimeError("GITHUB_REPO env var must be set, e.g. 'rayyanop61/gyaankhand'.")
-    safe_path = quote(image_relpath.lstrip("/"))
+        raise RuntimeError("GITHUB_REPO env var must be set, e.g. 'owner/gyaankhand'.")
+    safe_path = quote(relpath.lstrip("/"))
     return (
         f"https://raw.githubusercontent.com/{config.GITHUB_REPO}/"
         f"{config.GITHUB_BRANCH}/{safe_path}"
@@ -51,12 +51,13 @@ def _check(resp: requests.Response, ctx: str) -> dict:
     return resp.json()
 
 
-def create_media_container(image_url: str, caption: str) -> str:
-    """Create the media container; returns container/creation ID."""
+def create_media_container(video_url: str, caption: str) -> str:
+    """Create a Reels media container; returns container/creation ID."""
     resp = requests.post(
         _api_url("me/media"),
         data={
-            "image_url": image_url,
+            "media_type": "REELS",
+            "video_url": video_url,
             "caption": caption,
             "access_token": config.IG_LONG_LIVED_TOKEN,
         },
@@ -69,7 +70,7 @@ def create_media_container(image_url: str, caption: str) -> str:
     return container_id
 
 
-def wait_for_container_ready(container_id: str, timeout_s: int = 120) -> None:
+def wait_for_container_ready(container_id: str, timeout_s: int = 300) -> None:
     """Poll container status until FINISHED or timeout."""
     deadline = time.time() + timeout_s
     while time.time() < deadline:
@@ -104,9 +105,9 @@ def publish_container(container_id: str) -> str:
     return _check(resp, "publish_container").get("id", "")
 
 
-def post(image_url: str, caption: str) -> str:
+def post(video_url: str, caption: str) -> str:
     """Full happy-path: create -> wait -> publish. Returns media ID."""
-    container_id = create_media_container(image_url, caption)
+    container_id = create_media_container(video_url, caption)
     wait_for_container_ready(container_id)
     return publish_container(container_id)
 

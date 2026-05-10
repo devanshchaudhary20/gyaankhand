@@ -18,7 +18,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import config, image_renderer, instagram_poster, verse_loader
+from . import config, image_renderer, instagram_poster, verse_loader, video_renderer
 
 PENDING_FILE = config.STATE_DIR / "_pending.json"
 
@@ -40,24 +40,28 @@ def render_step(dry_run: bool = False) -> dict:
     base_image = verse_loader.pick_base_image()
 
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
-    out_relpath = f"posts/{timestamp}-{verse['id']}.jpg"
-    out_path = config.ROOT / out_relpath
+    video_relpath = f"posts/{timestamp}-{verse['id']}.mp4"
+    video_path = config.ROOT / video_relpath
+    # Intermediate image (not committed to the repo)
+    image_path = video_path.with_suffix(".jpg")
 
     print(f"[gyaankhand] verse:  {verse['id']} ({verse['source']})")
     print(f"[gyaankhand] base:   {base_image.name}")
-    print(f"[gyaankhand] output: {out_path}")
+    print(f"[gyaankhand] output: {video_path}")
 
     image_renderer.render_verse(
         base_image_path=base_image,
         devanagari_text=verse["text_devanagari"],
         iast_text=verse["text_iast"],
-        output_path=out_path,
+        output_path=image_path,
         handle=config.IG_HANDLE or None,
     )
+    video_renderer.render_reel(image_path=image_path, output_path=video_path)
+    image_path.unlink(missing_ok=True)  # only the video is committed
 
     info = {
         "verse_id": verse["id"],
-        "image_relpath": out_relpath,
+        "video_relpath": video_relpath,
         "caption": build_caption(verse),
         "rendered_at": datetime.now(timezone.utc).isoformat(),
     }
@@ -81,15 +85,15 @@ def publish_step(info: dict | None = None) -> str:
 
     config.assert_runtime_config()
 
-    image_url = instagram_poster.public_image_url(info["image_relpath"])
-    print(f"[gyaankhand] image url: {image_url}")
+    video_url = instagram_poster.public_media_url(info["video_relpath"])
+    print(f"[gyaankhand] video url: {video_url}")
 
-    media_id = instagram_poster.post(image_url=image_url, caption=info["caption"])
+    media_id = instagram_poster.post(video_url=video_url, caption=info["caption"])
     print(f"[gyaankhand] published media id: {media_id}")
 
     verse_loader.record_post(
         verse_id=info["verse_id"],
-        image_relpath=info["image_relpath"],
+        image_relpath=info["video_relpath"],
         ig_media_id=media_id,
     )
 

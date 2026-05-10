@@ -30,9 +30,10 @@ FONT_IAST = FONTS_DIR / "CrimsonText-Italic.ttf"
 FONT_HANDLE = FONTS_DIR / "NotoSans-Regular.ttf"
 
 
-# --- Image render settings ----------------------------------------------
+# --- Image / video render settings --------------------------------------
 IMG_WIDTH = 1080
-IMG_HEIGHT = 1350
+IMG_HEIGHT = 1920   # 9:16 for Reels
+REEL_DURATION = 30   # seconds
 OVERLAY_OPACITY = 140  # 0-255; darker = more readable text
 DEVANAGARI_FONT_SIZE = 56
 IAST_FONT_SIZE = 36
