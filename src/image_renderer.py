@@ -1,7 +1,6 @@
 """Renders a verse onto a base image and saves to posts/."""
 from __future__ import annotations
 
-import textwrap
 from pathlib import Path
 from typing import Iterable
 
@@ -85,7 +84,6 @@ def _draw_block(
         w = bbox[2] - bbox[0]
         h = bbox[3] - bbox[1]
         x = center_x - w // 2
-        # Subtle shadow for readability over photo
         draw.text((x + 2, y + 2), line, font=font, fill=(0, 0, 0))
         draw.text((x, y), line, font=font, fill=fill)
         y += h + line_spacing
@@ -98,17 +96,14 @@ def _prepare_base(image_path: Path) -> Image.Image:
     target_ratio = config.IMG_WIDTH / config.IMG_HEIGHT
     src_ratio = img.width / img.height
     if src_ratio > target_ratio:
-        # Source is wider; crop sides
         new_width = int(img.height * target_ratio)
         left = (img.width - new_width) // 2
         img = img.crop((left, 0, left + new_width, img.height))
     else:
-        # Source is taller; crop top/bottom
         new_height = int(img.width / target_ratio)
         top = (img.height - new_height) // 2
         img = img.crop((0, top, img.width, top + new_height))
     img = img.resize((config.IMG_WIDTH, config.IMG_HEIGHT), Image.LANCZOS)
-    # A subtle blur softens busy backgrounds for text readability
     img = img.filter(ImageFilter.GaussianBlur(radius=1.2))
     return img
 
@@ -117,58 +112,77 @@ def render_verse(
     base_image_path: Path,
     devanagari_text: str,
     iast_text: str,
+    translation_en: str,
     output_path: Path,
     handle: str | None = None,
 ) -> Path:
     """Render the post image and save to output_path. Returns output_path."""
     base = _prepare_base(base_image_path)
+    composite = base.convert("RGBA")
 
-    # Translucent orange overlay for warmth + text legibility
-    overlay = Image.new(
-        "RGBA",
-        (config.IMG_WIDTH, config.IMG_HEIGHT),
-        (*config.OVERLAY_COLOR, config.OVERLAY_OPACITY),
-    )
-    composite = Image.alpha_composite(base.convert("RGBA"), overlay)
+    # Temporary draw surface for text measurement
     draw = ImageDraw.Draw(composite)
 
     devanagari_font = _load_font(config.FONT_DEVANAGARI, config.DEVANAGARI_FONT_SIZE)
-    iast_font = _load_font(config.FONT_IAST, config.IAST_FONT_SIZE)
+    iast_font      = _load_font(config.FONT_IAST,       config.IAST_FONT_SIZE)
+    english_font   = _load_font(config.FONT_HANDLE,     config.ENGLISH_FONT_SIZE)
 
     max_text_width = config.IMG_WIDTH - 2 * config.SIDE_PADDING
 
-    # Wrap blocks
+    # Wrap all three blocks
     devanagari_lines = _wrap_to_width(devanagari_text, devanagari_font, draw, max_text_width)
-    iast_lines = _wrap_to_width(iast_text, iast_font, draw, max_text_width)
+    iast_lines       = _wrap_to_width(iast_text,       iast_font,       draw, max_text_width)
+    english_lines    = _wrap_to_width(translation_en,  english_font,    draw, max_text_width)
 
-    # Measure for vertical centering
+    # Measure total text height
     _, dev_h = _measure_block(devanagari_lines, devanagari_font, draw, config.LINE_SPACING_DEVANAGARI)
-    _, iast_h = _measure_block(iast_lines, iast_font, draw, config.LINE_SPACING_IAST)
-    total_h = dev_h + config.GAP_BETWEEN_BLOCKS + iast_h
+    _, iast_h = _measure_block(iast_lines,      iast_font,       draw, config.LINE_SPACING_IAST)
+    _, eng_h  = _measure_block(english_lines,   english_font,    draw, config.LINE_SPACING_ENGLISH)
 
-    start_y = max(120, (config.IMG_HEIGHT - total_h) // 2)
+    total_text_h = (
+        dev_h
+        + config.GAP_BETWEEN_BLOCKS
+        + iast_h
+        + config.GAP_BETWEEN_BLOCKS
+        + eng_h
+    )
+
+    # Panel bounds — centered vertically, padded on all sides
+    pad = config.TEXT_PANEL_PADDING
+    panel_top    = max(80, (config.IMG_HEIGHT - total_text_h) // 2 - pad)
+    panel_bottom = panel_top + total_text_h + 2 * pad
+    panel_left   = config.SIDE_PADDING - pad
+    panel_right  = config.IMG_WIDTH - config.SIDE_PADDING + pad
+
+    # Draw semi-transparent orange panel only behind text
+    panel = Image.new("RGBA", (config.IMG_WIDTH, config.IMG_HEIGHT), (0, 0, 0, 0))
+    ImageDraw.Draw(panel).rounded_rectangle(
+        [panel_left, panel_top, panel_right, panel_bottom],
+        radius=config.TEXT_PANEL_CORNER_RADIUS,
+        fill=(*config.OVERLAY_COLOR, config.OVERLAY_OPACITY),
+    )
+    composite = Image.alpha_composite(composite, panel)
+    draw = ImageDraw.Draw(composite)
+
+    # Draw text
     center_x = config.IMG_WIDTH // 2
+    text_top  = panel_top + pad
 
     after_dev = _draw_block(
-        draw,
-        devanagari_lines,
-        devanagari_font,
-        center_x,
-        start_y,
-        config.LINE_SPACING_DEVANAGARI,
-        config.TEXT_COLOR,
+        draw, devanagari_lines, devanagari_font, center_x,
+        text_top, config.LINE_SPACING_DEVANAGARI, config.TEXT_COLOR,
+    )
+    after_iast = _draw_block(
+        draw, iast_lines, iast_font, center_x,
+        after_dev + config.GAP_BETWEEN_BLOCKS, config.LINE_SPACING_IAST, config.TEXT_COLOR,
     )
     _draw_block(
-        draw,
-        iast_lines,
-        iast_font,
-        center_x,
-        after_dev + config.GAP_BETWEEN_BLOCKS,
-        config.LINE_SPACING_IAST,
-        config.TEXT_COLOR,
+        draw, english_lines, english_font, center_x,
+        after_iast + config.GAP_BETWEEN_BLOCKS, config.LINE_SPACING_ENGLISH,
+        config.ENGLISH_TEXT_COLOR,
     )
 
-    # Optional handle at the bottom
+    # Handle at the bottom
     if handle:
         try:
             handle_font = _load_font(config.FONT_HANDLE, config.HANDLE_FONT_SIZE)
@@ -180,7 +194,7 @@ def render_verse(
             draw.text((x + 1, y + 1), handle, font=handle_font, fill=(0, 0, 0))
             draw.text((x, y), handle, font=handle_font, fill=config.HANDLE_COLOR)
         except FileNotFoundError:
-            pass  # handle font is optional
+            pass
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     composite.convert("RGB").save(output_path, "JPEG", quality=92, optimize=True)

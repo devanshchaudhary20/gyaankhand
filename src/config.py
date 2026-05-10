@@ -35,16 +35,24 @@ FONT_HANDLE = FONTS_DIR / "NotoSans-Regular.ttf"
 IMG_WIDTH = 1080
 IMG_HEIGHT = 1920   # 9:16 for Reels
 REEL_DURATION = 30   # seconds
+
+# Text panel overlay (drawn only behind the text block, not the whole image)
 OVERLAY_COLOR = (180, 80, 20)   # warm orange tint
-OVERLAY_OPACITY = 120           # 0-255; keep low for a subtle wash
+OVERLAY_OPACITY = 160           # 0-255
+TEXT_PANEL_PADDING = 50         # pixels around the text inside the panel
+TEXT_PANEL_CORNER_RADIUS = 28
+
 DEVANAGARI_FONT_SIZE = 56
-IAST_FONT_SIZE = 36
+IAST_FONT_SIZE = 34
+ENGLISH_FONT_SIZE = 30
 HANDLE_FONT_SIZE = 28
-TEXT_COLOR = (245, 240, 230)  # warm off-white
+TEXT_COLOR = (245, 240, 230)        # warm off-white — Devanagari + IAST
+ENGLISH_TEXT_COLOR = (255, 248, 220) # slightly warmer — translation
 HANDLE_COLOR = (220, 215, 205)
 SIDE_PADDING = 80  # pixels from left/right edges
 LINE_SPACING_DEVANAGARI = 14
 LINE_SPACING_IAST = 8
+LINE_SPACING_ENGLISH = 10
 GAP_BETWEEN_BLOCKS = 40
 
 

@@ -53,6 +53,7 @@ def render_step(dry_run: bool = False) -> dict:
         base_image_path=base_image,
         devanagari_text=verse["text_devanagari"],
         iast_text=verse["text_iast"],
+        translation_en=verse["translation_en"],
         output_path=image_path,
         handle=config.IG_HANDLE or None,
     )
