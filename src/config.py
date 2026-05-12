@@ -37,7 +37,7 @@ IMG_HEIGHT = 1920   # 9:16 for Reels
 REEL_DURATION = 30   # seconds
 
 # Text panel overlay (drawn only behind the text block, not the whole image)
-OVERLAY_COLOR = (255, 187, 153)   # warm orange tint
+OVERLAY_COLOR = (245, 73, 39)   # warm orange tint
 OVERLAY_OPACITY = 110           # 0-255
 TEXT_PANEL_PADDING = 50         # pixels around the text inside the panel
 TEXT_PANEL_CORNER_RADIUS = 28
