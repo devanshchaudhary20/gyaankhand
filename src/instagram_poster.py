@@ -106,8 +106,57 @@ def publish_container(container_id: str) -> str:
 
 
 def post(video_url: str, caption: str) -> str:
-    """Full happy-path: create -> wait -> publish. Returns media ID."""
+    """Full happy-path for a Reel: create -> wait -> publish. Returns media ID."""
     container_id = create_media_container(video_url, caption)
+    wait_for_container_ready(container_id)
+    return publish_container(container_id)
+
+
+def create_carousel_item(image_url: str) -> str:
+    """Create a single carousel item container; returns its ID."""
+    resp = requests.post(
+        _api_url("me/media"),
+        data={
+            "image_url": image_url,
+            "is_carousel_item": "true",
+            "access_token": config.IG_LONG_LIVED_TOKEN,
+        },
+        timeout=60,
+    )
+    payload = _check(resp, "create_carousel_item")
+    item_id = payload.get("id")
+    if not item_id:
+        raise RuntimeError(f"No item id in response: {payload}")
+    return item_id
+
+
+def create_carousel_container(item_ids: list[str], caption: str) -> str:
+    """Create the CAROUSEL container from a list of item IDs; returns container ID."""
+    resp = requests.post(
+        _api_url("me/media"),
+        data={
+            "media_type": "CAROUSEL",
+            "children": ",".join(item_ids),
+            "caption": caption,
+            "access_token": config.IG_LONG_LIVED_TOKEN,
+        },
+        timeout=60,
+    )
+    payload = _check(resp, "create_carousel_container")
+    container_id = payload.get("id")
+    if not container_id:
+        raise RuntimeError(f"No container id in response: {payload}")
+    return container_id
+
+
+def post_carousel(image_url: str, caption: str) -> str:
+    """Post a single image as a 2-slide carousel. Returns media ID."""
+    # Two separate item containers from the same image URL
+    item_ids = [
+        create_carousel_item(image_url),
+        create_carousel_item(image_url),
+    ]
+    container_id = create_carousel_container(item_ids, caption)
     wait_for_container_ready(container_id)
     return publish_container(container_id)
 

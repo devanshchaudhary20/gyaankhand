@@ -50,20 +50,32 @@ def pick_next_verse() -> dict:
     return verses_by_recency[0]
 
 
-def pick_base_image() -> Path:
-    """Pick a random base image from data/base_images/."""
-    candidates = [
+_GITA_IMAGES = {"image10.jpg", "image11.jpg"}
+
+
+def pick_base_image(verse: dict | None = None) -> Path:
+    """Pick a random base image from data/base_images/.
+
+    If the verse is from the Bhagavad Gita, only image10 and image11 are used.
+    """
+    all_images = [
         p
         for p in config.BASE_IMAGES_DIR.iterdir()
         if p.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp"}
-        and not p.name.startswith("_")  # skip internal/test files
+        and not p.name.startswith("_")
     ]
-    if not candidates:
+    if not all_images:
         raise RuntimeError(
             f"No base images found in {config.BASE_IMAGES_DIR}. "
             "Drop at least one .jpg/.png in there."
         )
-    return random.choice(candidates)
+
+    if verse and verse.get("source", "").startswith("Bhagavad Gita"):
+        gita_images = [p for p in all_images if p.name in _GITA_IMAGES]
+        if gita_images:
+            return random.choice(gita_images)
+
+    return random.choice(all_images)
 
 
 def record_post(verse_id: str, image_relpath: str, ig_media_id: str) -> None:
@@ -79,15 +91,3 @@ def record_post(verse_id: str, image_relpath: str, ig_media_id: str) -> None:
     _save_state(state)
 
 
-def record_yt_video_id(yt_video_id: str) -> None:
-    """Attach a YouTube video ID to the most-recently-posted entry."""
-    state = _load_state()
-    entries = state.get("posted", [])
-    if not entries:
-        raise RuntimeError("No entries in posted.json to update with YouTube video ID.")
-    entries[-1]["yt_video_id"] = yt_video_id
-    _save_state(state)
-
-
-def load_verses() -> list[dict]:
-    return _load_verses()

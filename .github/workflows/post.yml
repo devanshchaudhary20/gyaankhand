@@ -1,4 +1,4 @@
-name: Daily Instagram Reel + YouTube Short
+name: Daily Instagram Carousel
 
 on:
   schedule:
@@ -30,9 +30,6 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Install ffmpeg
-        run: sudo apt-get install -y ffmpeg
-
       - name: Cache fonts
         id: cache-fonts
         uses: actions/cache@v4
@@ -44,17 +41,17 @@ jobs:
         if: steps.cache-fonts.outputs.cache-hit != 'true'
         run: bash scripts/download_fonts.sh
 
-      - name: Render verse reel
+      - name: Render verse image
         env:
           IG_HANDLE: ${{ vars.IG_HANDLE }}
         run: python -m src.main render
 
-      - name: Commit rendered reel (so it's reachable at raw.githubusercontent.com)
+      - name: Commit rendered image (so it's reachable at raw.githubusercontent.com)
         run: |
           git config user.name  "gyaankhand-bot"
           git config user.email "github-actions@users.noreply.github.com"
           git add posts/ state/_pending.json
-          git commit -m "Render daily reel [skip ci]" || { echo "Nothing to commit"; exit 0; }
+          git commit -m "Render daily image [skip ci]" || { echo "Nothing to commit"; exit 0; }
           git push
 
       - name: Publish to Instagram
@@ -68,15 +65,6 @@ jobs:
           IG_HANDLE:           ${{ vars.IG_HANDLE }}
         run: python -m src.main publish
 
-      - name: Publish to YouTube Shorts
-        env:
-          YT_CLIENT_ID:      ${{ secrets.YT_CLIENT_ID }}
-          YT_CLIENT_SECRET:  ${{ secrets.YT_CLIENT_SECRET }}
-          YT_REFRESH_TOKEN:  ${{ secrets.YT_REFRESH_TOKEN }}
-          YT_CHANNEL_HANDLE: ${{ vars.YT_CHANNEL_HANDLE }}
-          IG_HANDLE:         ${{ vars.IG_HANDLE }}
-        run: python -m src.main publish-yt
-
       - name: Commit posted-state log
         run: |
           git add -A state/
@@ -84,5 +72,5 @@ jobs:
             echo "Nothing to commit"
             exit 0
           fi
-          git commit -m "Log published reel [skip ci]"
+          git commit -m "Log published post [skip ci]"
           git push
