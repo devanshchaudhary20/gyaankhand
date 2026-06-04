@@ -155,6 +155,14 @@ def post_carousel(image_url: str, caption: str) -> str:
     item_ids = [
         create_carousel_item(image_url),
         create_carousel_item(image_url),
+        create_carousel_item(image_url),
+        create_carousel_item(image_url),
+        create_carousel_item(image_url),
+        create_carousel_item(image_url),
+        create_carousel_item(image_url),
+        create_carousel_item(image_url),
+        create_carousel_item(image_url),
+        create_carousel_item(image_url),
     ]
     container_id = create_carousel_container(item_ids, caption)
     wait_for_container_ready(container_id)
